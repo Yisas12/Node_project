@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="/css/welcome.css">
+<head>
+  <title>Search</title>
+</head>
+
+<body>
+  <div class="header">
+           <img class="logo" src="../images/apple1.png" width="100" height="120">
+  </div>
+
+  <nav class="navbar">
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="/products/pages/1">Products</a></li>
+            </ul>
+  </nav>
+
+  <h1 style="text-align: center;">Filter by price</h1>
+<!--              MIRAR LA RUTA DEL ACTION                -->
+  <form action="/products/price" method="post">
+    <label for="price">
+        <p>Price</p>
+        <input id="price" type="text" name="price">
+    </label>
+
+    <input type="submit" value="Filter">
+
+		{{#if error}}
+      <p style="color: red;">{{error}}</p>
+    {{/if}}
+  </form>
+</body>
+
+</html>

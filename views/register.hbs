@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" type="text/css" href="/css/welcome.css">
+<head>
+  <title>Register</title>
+</head>
+
+<body>
+  <div class="header">
+           <img class="logo" src="../images/apple1.png" width="100" height="120">
+  </div>
+
+  <nav class="navbar">
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="/products/pages/1">Products</a></li>
+            </ul>
+  </nav>
+
+  <h1>User Register</h1>
+<!--              MIRAR LA RUTA DEL ACTION                -->
+  <form action="/users/register" method="post">
+    <label for="name">
+        <p>Username</p>
+        <input id="name" type="text" name="name">
+    </label>
+
+    <label for="email">
+      <p>Email</p>
+      <input id="email" type="text" name="email">
+    </label>
+
+    <label for="password">
+      <p>Password</p>
+      <input id="password" type="password" name="password">
+    </label>
+
+    <label for="submit">
+      <input type="submit" value="Register now!">
+    </label>
+    
+
+		{{#if error}}
+      <p style="color: red;">{{error}}</p>
+    {{/if}}
+  </form>
+</body>
+
+</html>

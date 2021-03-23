@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="/css/welcome.css">
+<head>
+  <title>{{title}}</title>
+</head>
+
+<body>
+  <div class="header">
+           <img class="logo" src="../images/apple1.png" width="100" height="120">
+  </div>
+
+  <nav class="navbar">
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="/products/pages/1">Products</a></li>
+            </ul>
+  </nav>
+  
+  <form action="/products/id" method="post">
+    <label for="id">
+        <p>Id</p>
+        <input id="id" type="text" name="id">
+    </label>
+
+    <input type="submit" value="Search">
+
+		{{#if error}}
+      <p style="color: red;">{{error}}</p>
+    {{/if}}
+  </form>
+
+  <h1 style="text-align: center;">El producto con id {{this.id}}</h1>
+  {{#if this.product.id}}
+    <h3>Name: {{ this.product.name }}</h3>
+    <h3>Price: {{ this.product.price }}</h3>
+    <h3>Description: {{ this.product.description }}</h3>
+    <h3>Color: {{ this.product.color }}</h3>
+    <h3>Storage: {{ this.product.storage }}</h3>
+    <img src="/images/{{this.product.image}}" width="300px" height="300px">
+    <br>
+    <a href="../../cart/add/{{this.id}}">Comprar</a>
+
+	{{else}}
+		<h3>No hemos encontrado el producto que buscas!</h3>
+  {{/if}}
+</body>
+
+</html>

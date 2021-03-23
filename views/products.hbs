@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" type="text/css" href="/css/welcome.css">
+    <link rel="stylesheet" href="/css/products.css">
+    <script src="/javascript/fetch.js"></script>
+
+    <head>
+        <title>{{title}}</title>
+    </head>
+    <body>
+
+        <div class="header">
+           <img class="logo" src="/images/apple1.png" width="100" height="120">
+        </div>
+
+    <nav>
+        <ul>
+            <li><a href="../../">Home</a></li>
+            <li><a href="/products/create">Insert a product</a></li>
+            <li><a href="/products/id">Search by ID</a></li>
+            <li><a href="/products/price">Search by price</a></li>
+        </ul>
+    </nav>
+        
+            <form action="/users/logout" method="POST">
+                <input type="submit" value="Logout"></input>
+            </form>
+
+        <button id="prev" value="prev" onclick="resta()">Previous page</button>
+        <button id="next" value="next" onclick="suma()">Next page</button>
+
+        <script type="text/javascript">
+            function suma(){
+                let num_page = parseInt(window.location.href.substring(window.location.href.lastIndexOf('/') + 1));
+                console.log(num_page);
+                /*if(num_page + 1 < parametroPaginas){
+                    num_page +=1;
+                }*/
+                num_page +=1;
+                window.location.replace('http://localhost:3000/products/pages/' + num_page);
+                
+            }
+        </script>
+
+        <script type="text/javascript">
+            function resta(){
+                let num_page = parseInt(window.location.href.substring(window.location.href.lastIndexOf('/') + 1));
+                console.log(num_page);
+                if (num_page - 1 > 0){
+                    num_page -=1;
+                }
+
+                window.location.replace('http://localhost:3000/products/pages/' + num_page);
+            }
+        </script>
+
+        <ul>
+            {{#each products}}
+            <li style="list-style:none">
+                <h3>Name: {{ this.name }}</h3>
+                <h3>Price: {{ this.price }}</h3>
+                <h3>Description: {{ this.description }}</h3>
+                <h3>Color: {{ this.color }}</h3>
+                <h3>Storage: {{ this.storage }}</h3>
+                <img src="/images/{{image}}" width="150px" height="150px">
+                <br>
+
+                <form action="/cart/add/{{this.id}}" method="PUT">
+                     <input onclick=peticion({{this.id}}) type="submit" value="Comprar"></input>
+                </form>
+                
+                <br>
+
+                <hr size="2px" color="gray" />
+            </li>
+            {{/each}}
+        </ul>
+    </body>
+</html>

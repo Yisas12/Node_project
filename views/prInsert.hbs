@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="/css/welcome.css">
+<head>
+  <title>Product insert</title>
+</head>
+
+<body>
+  <div class="header">
+           <img class="logo" src="../images/apple1.png" width="100" height="120">
+  </div>
+
+  <nav class="navbar">
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="/products/pages/1">Products</a></li>
+            </ul>
+  </nav>
+
+  <h1 style="text-align: center;">Insert a new product</h1>
+<!--              MIRAR LA RUTA DEL ACTION                -->
+  <form action="/products/create" method="post">
+    <label for="name">
+        <p>Name</p>
+        <input id="name" type="text" name="name">
+    </label>
+
+    <label for="price">
+      <p>Price</p>
+      <input id="price" type="text" name="price">
+    </label>
+
+    <label for="description">
+      <p>Description</p>
+      <input id="description" type="text" name="description">
+    </label>
+
+    <label for="color">
+      <p>Color</p>
+      <input id="color" type="text" name="color">
+    </label>
+
+    <label for="storage">
+      <p>Storage</p>
+      <input id="storage" type="text" name="storage">
+    </label>
+
+    <label for="image">
+      <p>Image</p>
+      <input id="image" type="text" name="image">
+    </label>
+
+    <input type="submit" value="Insert">
+
+		{{#if error}}
+      <p style="color: red;">{{error}}</p>
+    {{/if}}
+  </form>
+</body>
+
+</html>
